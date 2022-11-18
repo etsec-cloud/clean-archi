@@ -10,7 +10,7 @@ const document = res._rawValue.res;
     <br />
     <NuxtLink to="/">Accueil</NuxtLink> <br />
     title: {{ document.title }} <br />
-    fileName: {{ client.fileName }} <br />
+    fileName: {{ document.fileName }} <br />
   </div>
 </template>
 

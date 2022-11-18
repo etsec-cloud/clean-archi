@@ -2,7 +2,11 @@
 const { data: res } = await useFetch("/api/document");
 console.log(res);
 const documents = res._rawValue;
-console.log(documents);
+async function deleteDocument(id: string) {
+  await $fetch(`/api/document/${id}`, {
+    method: "DELETE",
+  });
+}
 </script>
 
 <template>
@@ -14,10 +18,10 @@ console.log(documents);
         title: {{ document.title }} <br />
         fileName: {{ document.fileName }} <br />
         creation date: {{ document.creationDate }} <br />
-        {{ document.uuid }}
         <NuxtLink :to="`/document/detail/${document.uuid}`"
-          ><button>Document</button></NuxtLink
+          ><button>Detail</button></NuxtLink
         >
+        <button @click="deleteDocument(document.uuid)">Supprimer</button> <br />
       </div>
     </div>
   </div>
