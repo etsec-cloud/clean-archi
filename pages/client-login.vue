@@ -1,13 +1,12 @@
 <script  lang='ts' setup>
 // const data = await useFetch('/api/client')
-async function registerClient(input:IInputClient)  { 
-    await $fetch( '/api/client/register', {
+async function login(input: IClientConnection)  { 
+   await $fetch( '/api/client/login', {
         method: 'POST',
         body: data
     });
 }
 const data = reactive({
-    name: '',
     email: '',
     password: '',
 })
@@ -16,20 +15,12 @@ const data = reactive({
 
 <template>
     <div>
-        <h1>Register</h1>
+        <h1>Login</h1>
       <form
         id="app"
         method="post"
-        @submit="registerClient"
+        @submit="login"
         >
-        <p>
-            <label for="age">Name</label>
-            <input
-            id="name"
-            v-model="data.name"
-            type="text"
-            >
-        </p>
         <p>
             <label for="age">email</label>
             <input
@@ -52,7 +43,6 @@ const data = reactive({
         </p>
         
       </form>
-
     </div>
 </template>
 

@@ -14,6 +14,7 @@ const clients = res._rawValue
                 id: {{client.uuid}} <br />
                 name: {{client.name}}  <br />
                 email: {{client.email}} <br />
+                <NuxtLink :to="`/client-detail/${client.uuid}`">Document</NuxtLink> <br />
                 ------------------------------  <br />
             </div>
         </div>
