@@ -21,7 +21,10 @@ export class ClientHelper {
             email: input.email,
             password
         }
-        if(!this.clients.find(client => client.email === input.email)){
+        if(
+            !this.clients.find(client => client.email === input.email)
+            && input.name !== "" && input.email !== "" && input.password !== ""
+        ){
             this.clients.push(client);
             return true
         } else{

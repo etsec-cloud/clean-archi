@@ -15,4 +15,8 @@ describe('Delete client', async () => {
         ClientHelper.delete(uuid);
         expect(ClientHelper.clients).toHaveLength(0)
     })
+    it('Should not crash server if deleting a non existant client', async () => {
+        ClientHelper.delete(uuid);
+        expect(ClientHelper.clients).toHaveLength(0)
+    })
 });
