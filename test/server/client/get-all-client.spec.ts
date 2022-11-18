@@ -8,8 +8,8 @@ describe('Client', async () => {
        expect(clients).toStrictEqual([])
    })
    it('Should be an array', async () => {
-    const clients = ClientHelper.getAll()
-    expect(clients).toBeInstanceOf(Array)
+        const clients = ClientHelper.getAll()
+        expect(clients).toBeInstanceOf(Array)
     })
    it("Should be conform to IClient" , async () =>{
     const clientTest = {

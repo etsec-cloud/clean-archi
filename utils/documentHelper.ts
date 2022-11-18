@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 export class DocumentHelper {
     static documents: IDocument[] = [];
     static getAll(): IDocument[] {
@@ -11,6 +13,7 @@ export class DocumentHelper {
         throw new Error('Client not found');
     }
     static create(document: IDocument): void {
+        document.uuid = v4();  
         this.documents.push(document);
     }
     static delete(uuid: string): Boolean {
