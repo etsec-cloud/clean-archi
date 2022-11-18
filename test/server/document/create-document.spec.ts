@@ -12,7 +12,7 @@ describe('Document creation', async () => {
             creationDate: new Date(),
             clientId: "1",
         }
-        DocumentHelper.add(document);
+        DocumentHelper.create(document);
         expect(DocumentHelper.documents).toContainEqual(document)
     })
 });

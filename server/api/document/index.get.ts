@@ -1,3 +1,6 @@
+import { DocumentHelper } from "~~/utils/documentHelper"
+
 export default defineEventHandler (() => {
-    return {}
+    const res = DocumentHelper.getAll();
+    return res
 })

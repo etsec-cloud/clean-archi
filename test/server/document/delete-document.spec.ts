@@ -2,7 +2,6 @@ import { DocumentHelper } from '../../../utils/documentHelper'
 import { beforeEach, describe, expect, it, should, test } from 'vitest'
 import { v4 } from 'uuid';
 
-
 describe('Delete document', async () => {
     let document:IDocument
     beforeEach(() => {
