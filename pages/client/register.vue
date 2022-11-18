@@ -22,8 +22,8 @@ const data = reactive({
         <input id="name" v-model="data.name" type="text" />
       </p>
       <p>
-        <label for="age">email</label>
-        <input id="email" v-model="data.email" type="test" />
+        <label for="email">email</label>
+        <input id="email" v-model="data.email" type="email" />
       </p>
       <p>
         <label for="age">password</label>

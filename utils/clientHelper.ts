@@ -1,13 +1,16 @@
 import bcrypt from 'bcrypt';
 import { v4 } from 'uuid';
+import { DocumentHelper } from './documentHelper';
 export class ClientHelper {
     static clients: IClient[] = [];
     static getAll(): IClient[] {
         return this.clients;
     }
-    static getOne(uuid:string): IClient {
+    static getOne(uuid:string): IClient{
         const client = this.clients.find(client => client.uuid === uuid);
         if (client) {
+            client.documents = DocumentHelper.getByClient(uuid);
+            console.log(client.documents);
             return client;
         }
         throw new Error('Client not found');

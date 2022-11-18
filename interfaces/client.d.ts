@@ -1,5 +1,6 @@
 interface  IClient extends IInputClient {
     uuid : string;
+    documents? : IDocument[];
 }
 
 interface IInputClient extends IClientConnection {
