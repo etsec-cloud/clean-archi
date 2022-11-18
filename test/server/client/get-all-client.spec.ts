@@ -3,11 +3,11 @@ import { ClientHelper } from '../../../utils/clientHelper'
 import {v4} from 'uuid'
 
 describe('Client', async () => {
-   it("Should get clients", async () => {
-       const clients = ClientHelper.getAll()
-       expect(clients).toStrictEqual([])
-   })
-   it('Should be an array', async () => {
+    it("Should get clients", async () => {
+        const clients = ClientHelper.getAll()
+        expect(clients).toStrictEqual([])
+    })
+    it('Should be an array', async () => {
         const clients = ClientHelper.getAll()
         expect(clients).toBeInstanceOf(Array)
     })
