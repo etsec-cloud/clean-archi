@@ -24,6 +24,8 @@ export class ClientHelper {
         if (
             !this.clients.find(client => client.email === input.email)
             && input.name !== "" && input.email !== "" && input.password !== ""
+            && input.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+            && input.name.match(/^[a-z ,.'-]+$/i)
         ) {
             this.clients.push(client);
             return true
@@ -45,7 +47,12 @@ export class ClientHelper {
     }
     static update(uuid: string, input: IInputClient): void {
         const client = this.clients.find(client => client.uuid === uuid);
-        if (client && input.name !== "" && input.email !== "" && input.password !== "") {
+        if (
+            client 
+            && input.name !== "" && input.email !== "" && input.password !== ""
+            && input.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+            && input.name.match(/^[a-z ,.'-]+$/i)
+        ) {
             client.name = input.name;
             client.email = input.email;
         }
