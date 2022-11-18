@@ -3,25 +3,25 @@ import { ClientHelper } from '../../../utils/clientHelper'
 import {v4} from 'uuid'
 
 describe('Register Client', async () => {
-    const clientTest = {
+    const invalidClient = {
         name: "",
         email: "test@gmail.com",
         password: "password"
     }
-    const clientTest2 = {
+    const invalidClient2 = {
         name: "name",
         email: "",
         password: "password"
     }
-    const clientTest3 = {
+    const invalidClient3 = {
         name: "name",
         email: "test@gmail.com",
         password: ""
     }
     it('Should not create a client with an empty value', async () => {
-        ClientHelper.register(clientTest);
-        ClientHelper.register(clientTest2);
-        ClientHelper.register(clientTest3);
+        ClientHelper.register(invalidClient);
+        ClientHelper.register(invalidClient2);
+        ClientHelper.register(invalidClient3);
         expect(ClientHelper.clients).toHaveLength(0)
     })
 
