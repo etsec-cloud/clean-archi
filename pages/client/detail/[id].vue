@@ -2,7 +2,6 @@
 const route = useRoute();
 const { data: res } = await useFetch(`/api/client/${route.params.id}`);
 const client = res._rawValue.res;
-console.log(client);
 </script>
 
 <template>

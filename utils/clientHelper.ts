@@ -10,7 +10,6 @@ export class ClientHelper {
         const client = this.clients.find(client => client.uuid === uuid);
         if (client) {
             client.documents = DocumentHelper.getByClient(uuid);
-            console.log(client.documents);
             return client;
         }
         throw new Error('Client not found');

@@ -24,7 +24,6 @@ export class DocumentHelper {
         return this.documents.filter((doc) => doc.title.includes(title));
     }
     static getByClient(clientId: string): IDocument[] {
-        console.log(this.documents);
         return this.documents.filter((doc) => doc.clientId === clientId);
     }
 }
