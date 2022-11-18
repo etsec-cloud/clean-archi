@@ -45,7 +45,7 @@ export class ClientHelper {
     }
     static update(uuid: string, input: IInputClient): void {
         const client = this.clients.find(client => client.uuid === uuid);
-        if (client) {
+        if (client && input.name !== "" && input.email !== "" && input.password !== "") {
             client.name = input.name;
             client.email = input.email;
         }
