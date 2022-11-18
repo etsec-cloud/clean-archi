@@ -28,6 +28,7 @@ describe('Register Client', async () => {
         email: "test@gmail.com",
         password: ""
     }
+    
     it('Should not create a client with an empty value', async () => {
         ClientHelper.register(invalidClient);
         ClientHelper.register(invalidClient2);
