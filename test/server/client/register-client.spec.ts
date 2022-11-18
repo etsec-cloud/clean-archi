@@ -1,8 +1,18 @@
-import { describe, expect, it, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { ClientHelper } from '../../../utils/clientHelper'
-import {v4} from 'uuid'
 
 describe('Register Client', async () => {
+    const invalidClientWithWrongEmail = {
+        name: "nameUpdated",
+        email: "emailUpdated",
+        password: 'newPassword'
+    }
+    const invalidClientWithWrongName = {
+        name: "name$with^odd&characters",
+        email: "email@gmail.com",
+        password: 'newPassword'
+    }
+
     const invalidClient = {
         name: "",
         email: "test@gmail.com",
@@ -22,6 +32,12 @@ describe('Register Client', async () => {
         ClientHelper.register(invalidClient);
         ClientHelper.register(invalidClient2);
         ClientHelper.register(invalidClient3);
+        expect(ClientHelper.clients).toHaveLength(0)
+    })
+
+    it('Should not update a client with unmatching regex', async () => {
+        ClientHelper.register(invalidClientWithWrongEmail);
+        ClientHelper.register(invalidClientWithWrongName);
         expect(ClientHelper.clients).toHaveLength(0)
     })
 
