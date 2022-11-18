@@ -21,13 +21,13 @@ export class ClientHelper {
             email: input.email,
             password
         }
-        if(
+        if (
             !this.clients.find(client => client.email === input.email)
             && input.name !== "" && input.email !== "" && input.password !== ""
-        ){
+        ) {
             this.clients.push(client);
             return true
-        } else{
+        } else {
             return false
         }
     }
@@ -35,7 +35,7 @@ export class ClientHelper {
         const client = this.clients.find(client => client.email === input.email);
         if (client && bcrypt.compareSync(input.password, client.password)) {
             return client;
-        }else{
+        } else {
             return undefined;
         }
     }
