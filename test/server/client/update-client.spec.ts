@@ -46,7 +46,6 @@ describe('Update client', async () => {
 
     it('Should not update a client with an empty value', async () => {
         ClientHelper.update(uuid, invalidUpdatedClient);
-        
         expect(ClientHelper.clients).toHaveLength(1)
         expect(ClientHelper.clients[0].name).toBe(clientTest.name)
         expect(ClientHelper.clients[0].email).toBe(clientTest.email)
@@ -64,7 +63,6 @@ describe('Update client', async () => {
 
     it('Should not update a client with unmatching regex', async () => {
         ClientHelper.update(uuid, invalidUpdatedClientWithWrongEmail);
-        
         expect(ClientHelper.clients).toHaveLength(1)
         expect(ClientHelper.clients[0].name).toBe(clientTest.name)
         expect(ClientHelper.clients[0].email).toBe(clientTest.email)
