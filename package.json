@@ -30,7 +30,9 @@
     "vitest": "^0.25.2"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.4",
     "bcrypt": "^5.1.0",
+    "pinia": "^2.0.24",
     "tailwind": "^4.0.0",
     "uuid": "^9.0.0"
   }
