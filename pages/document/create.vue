@@ -49,7 +49,11 @@ const handleFileSelection = (e: { target: { files: null[] } }) => {
       </p>
       <p>
         <label for="file"> Upload</label>
-        <input type="file" accept="application/pdf" @change="handleFileSelection($event)" />
+        <input
+          type="file"
+          accept="application/pdf"
+          @change="handleFileSelection($event)"
+        />
       </p>
       <p>
         <label for="name">file name</label>

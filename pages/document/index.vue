@@ -20,9 +20,7 @@ async function deleteDocument(id: string) {
         title: {{ document.title }} <br />
         fileName: {{ document.fileName }} <br />
         creation date: {{ document.creationDate }} <br />
-        <a :href="`/${document.fileName}.pdf`"
-        ><button>View</button></a
-        >
+        <a :href="`/${document.fileName}.pdf`"><button>View</button></a>
         <NuxtLink :to="`/document/detail/${document.uuid}`"
           ><button>Detail</button></NuxtLink
         >

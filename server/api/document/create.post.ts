@@ -1,5 +1,5 @@
 import { DocumentHelper } from "~~/utils/documentHelper";
-import formidable  from "formidable";
+import formidable from "formidable";
 // eslint-disable-next-line no-undef
 export default defineEventHandler(async (event) => {
   const form = formidable({ multiples: true });
@@ -15,16 +15,15 @@ export default defineEventHandler(async (event) => {
         reject("File type is not pdf");
         return;
       }
-      console.log(files)
+      console.log(files);
       resolve({ fields, files });
     });
-  })
+  });
   DocumentHelper.uploadDocument(fields, files);
   const body = {
     ...fields,
-    creationDate: new Date()
-  }
-  // eslint-disable-next-line no-undefs
+    creationDate: new Date(),
+  };
   const isCreate = DocumentHelper.create(body);
   return {
     isCreate: isCreate,
