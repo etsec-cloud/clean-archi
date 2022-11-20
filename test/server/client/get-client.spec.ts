@@ -22,6 +22,7 @@ describe('Get client', async () => {
         fileName: "fileName", 
         creationDate: new Date(),
         clientId: clientWithDocument.uuid,
+        type: "text/pdf",
     }
     DocumentHelper.documents.push(documentTest)
 

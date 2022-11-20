@@ -10,6 +10,7 @@ describe('Search Document', async () => {
             fileName: "fileName",
             creationDate: new Date(),
             clientId: "1",
+            type: "text/pdf",
         };
         DocumentHelper.documents.push(document);
     })

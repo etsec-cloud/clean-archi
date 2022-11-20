@@ -11,6 +11,7 @@ const document = res._rawValue.res;
     <NuxtLink to="/">Accueil</NuxtLink> <br />
     title: {{ document.title }} <br />
     fileName: {{ document.fileName }} <br />
+    file : {{ document.file }}
   </div>
 </template>
 

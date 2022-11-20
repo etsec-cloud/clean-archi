@@ -11,8 +11,21 @@ describe('Document creation', async () => {
             fileName: "fileName",
             creationDate: new Date(),
             clientId: "1",
+            type: "text/pdf",
         }
         DocumentHelper.create(document);
         expect(DocumentHelper.documents).toContainEqual(document)
+    })
+    it('Should not create a document', async () => {
+        const document = {
+            uuid : v4(),
+            title: "",
+            fileName: "",
+            creationDate: new Date(),
+            clientId: "",
+            type: "",
+        }
+        DocumentHelper.create(document);
+        expect(DocumentHelper.documents).not.toContainEqual(document)
     })
 });
