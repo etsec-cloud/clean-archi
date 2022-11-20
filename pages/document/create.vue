@@ -37,11 +37,10 @@ const handleFileSelection = (e: { target: { files: null[] } }) => {
   <div>
     <h1>Create document</h1>
     <NuxtLink to="/">Accueil</NuxtLink>
-    {{ data }}
     <form id="doc" method="post" @submit="createDocument">
       <p>
         <label for="title">title</label>
-        <input id="title" v-model="data.title" type="text" />
+        <input id="title" v-model="data.title" type="text" placeholder="only pdf" />
       </p>
       <p>
         <label for="name">file name</label>
@@ -49,20 +48,12 @@ const handleFileSelection = (e: { target: { files: null[] } }) => {
       </p>
       <p>
         <label for="file"> Upload</label>
-        <input
-          type="file"
-          accept="application/pdf"
-          @change="handleFileSelection($event)"
-        />
+        <input type="file" accept="application/pdf" @change="handleFileSelection($event)" />
       </p>
       <p>
         <label for="name">file name</label>
         <select v-model="data.clientId">
-          <option
-            v-for="client in clients"
-            :key="client.id"
-            :value="client.uuid"
-          >
+          <option v-for="client in clients" :key="client.id" :value="client.uuid">
             {{ client.name }}
           </option>
         </select>
@@ -73,5 +64,3 @@ const handleFileSelection = (e: { target: { files: null[] } }) => {
     </form>
   </div>
 </template>
-
-<style></style>

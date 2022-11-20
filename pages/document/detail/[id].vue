@@ -1,13 +1,19 @@
 <script lang="ts" setup>
+import { useDocumentsStore } from "~~/stores/documents";
+import { ref } from "vue";
+
 // eslint-disable-next-line no-undef
 const route = useRoute();
 // eslint-disable-next-line no-undef
-const {
-  data: {
-    value: { res: document },
-  },
+
+const document = ref(useDocumentsStore().getDocumentById(route.params.id));
+
+if (!document.value) {
   // eslint-disable-next-line no-undef
-} = await useFetch(`/api/document/${route.params.id}`);
+  const { data: res } = await useFetch(`/api/document/${route.params.id}`);
+  useDocumentsStore().add(res._rawValue.res);
+  document.value = res._rawValue.res;
+}
 </script>
 
 <template>
@@ -20,5 +26,3 @@ const {
     file : {{ document.file }}
   </div>
 </template>
-
-<style></style>

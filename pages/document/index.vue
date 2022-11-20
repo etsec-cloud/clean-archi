@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // eslint-disable-next-line no-undef
 let { data: res } = await useFetch("/api/document");
-console.log(res);
+
 const documents = res._rawValue;
 async function deleteDocument(id: string) {
   // eslint-disable-next-line no-undef
@@ -21,9 +21,7 @@ async function deleteDocument(id: string) {
         fileName: {{ document.fileName }} <br />
         creation date: {{ document.creationDate }} <br />
         <a :href="`/${document.fileName}.pdf`"><button>View</button></a>
-        <NuxtLink :to="`/document/detail/${document.uuid}`"
-          ><button>Detail</button></NuxtLink
-        >
+        <NuxtLink :to="`/document/detail/${document.uuid}`"><button>Detail</button></NuxtLink>
         <button @click="deleteDocument(document.uuid)">Supprimer</button> <br />
       </div>
     </div>
