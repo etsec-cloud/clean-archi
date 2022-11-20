@@ -1,6 +1,6 @@
-import { ClientHelper } from "~~/utils/clientHelper"
+import { ClientHelper } from "~~/utils/clientHelper";
 
-export default defineEventHandler (() => {
-    const res = ClientHelper.getAll();
-    return res
-})
+export default defineEventHandler(() => {
+  const res = ClientHelper.getAll();
+  return res;
+});

@@ -1,4 +1,4 @@
-import path from 'path'
+import path from "path";
 
 export default {
   test: {
@@ -6,7 +6,7 @@ export default {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '.')
-    }
-  }
-}
+      "@": path.resolve(__dirname, "."),
+    },
+  },
+};

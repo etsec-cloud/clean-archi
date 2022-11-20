@@ -1,7 +1,12 @@
 <script lang="ts" setup>
+// eslint-disable-next-line no-undef
 const route = useRoute();
-const { data: res } = await useFetch(`/api/document/${route.params.id}`);
-const document = res._rawValue.res;
+// eslint-disable-next-line no-undef
+const {
+  data: {
+    value: { res: document },
+  },
+} = await useFetch(`/api/document/${route.params.id}`);
 </script>
 
 <template>

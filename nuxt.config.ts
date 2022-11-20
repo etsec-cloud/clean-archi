@@ -1,17 +1,16 @@
-import path from 'path'
+import path from "path";
 
+// eslint-disable-next-line no-undef
 export default defineNuxtConfig({
   alias: {
-    "@": path.resolve(__dirname, '.'),
+    "@": path.resolve(__dirname, "."),
   },
   modules: [
     [
-      '@pinia/nuxt',
+      "@pinia/nuxt",
       {
-        autoImports: [
-          ['defineStore', 'definePiniaStore'],
-        ],
+        autoImports: [["defineStore", "definePiniaStore"]],
       },
     ],
   ],
-})
+});

@@ -1,9 +1,9 @@
-import { DocumentHelper } from "~~/utils/documentHelper"
+import { DocumentHelper } from "~~/utils/documentHelper";
 
-export default defineEventHandler  ( async (event) => {
-    const body = await readBody(event)
-    const isCreate =  DocumentHelper.create(body)
-    return {
-        isCreate: isCreate
-    }
-})
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  const isCreate = DocumentHelper.create(body);
+  return {
+    isCreate: isCreate,
+  };
+});
