@@ -1,9 +1,5 @@
 import { DocumentHelper } from "../../../utils/documentHelper";
-<<<<<<< HEAD
-import { beforeEach, describe, expect, it, should, test } from "vitest";
-=======
 import { beforeEach, describe, expect, it } from "vitest";
->>>>>>> abc
 import { v4 } from "uuid";
 
 describe("Search Document", async () => {
@@ -14,10 +10,7 @@ describe("Search Document", async () => {
       fileName: "fileName",
       creationDate: new Date(),
       clientId: "1",
-<<<<<<< HEAD
-=======
       type: "text/pdf",
->>>>>>> abc
     };
     DocumentHelper.documents.push(document);
   });

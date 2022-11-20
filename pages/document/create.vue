@@ -28,11 +28,7 @@ const data = reactive({
   file: null,
 });
 
-<<<<<<< HEAD
-const handleFileSelection = (e: { target: { files: null[] }; }) => {
-=======
 const handleFileSelection = (e: { target: { files: null[] } }) => {
->>>>>>> abc
   data.file = e.target.files[0];
 };
 </script>

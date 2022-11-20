@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { beforeEach, describe, expect, it, test } from "vitest";
-=======
 import { describe, expect, it } from "vitest";
->>>>>>> abc
 import { ClientHelper } from "../../../utils/clientHelper";
 import { DocumentHelper } from "../../../utils/documentHelper";
 import { v4 } from "uuid";
@@ -26,10 +22,7 @@ describe("Get client", async () => {
     fileName: "fileName",
     creationDate: new Date(),
     clientId: clientWithDocument.uuid,
-<<<<<<< HEAD
-=======
     type: "text/pdf",
->>>>>>> abc
   };
   DocumentHelper.documents.push(documentTest);
 

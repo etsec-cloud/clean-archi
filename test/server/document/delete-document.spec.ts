@@ -1,11 +1,7 @@
 import { DocumentHelper } from "../../../utils/documentHelper";
-<<<<<<< HEAD
-import { beforeEach, describe, expect, it, should, test } from "vitest";
-=======
 import { beforeEach, describe, expect, it } from "vitest";
 // @ts-ignore
 import { IDocument } from "../../../interfaces/document";
->>>>>>> abc
 import { v4 } from "uuid";
 
 describe("Delete document", async () => {
