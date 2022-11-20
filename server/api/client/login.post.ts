@@ -1,9 +1,11 @@
-import { ClientHelper } from "~~/utils/clientHelper"
+import { ClientHelper } from "~~/utils/clientHelper";
 
-export default defineEventHandler  ( async (event) => {
-    const body = await readBody(event)
-    const isLogged = ClientHelper.login(body)
-    return {
-        isLogged : isLogged
-    }
-})
+// eslint-disable-next-line no-undef
+export default defineEventHandler(async (event) => {
+  // eslint-disable-next-line no-undef
+  const body = await readBody(event);
+  const isLogged = ClientHelper.login(body);
+  return {
+    isLogged: isLogged,
+  };
+});

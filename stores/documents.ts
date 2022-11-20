@@ -1,15 +1,19 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
+// @ts-ignore
+import { IDocument } from "../interfaces/document";
 
-export const useDocumentsStore = defineStore('DocumentStore', {
-  state: () => ({
-    documents: [] as Array<IDocument>,
+export const useDocumentsStore = defineStore("DocumentStore", {
+  state: (): {
+    documents: IDocument[];
+  } => ({
+    documents: [],
   }),
   getters: {
-    all: (state) => state.documents
+    all: (state) => state.documents,
   },
   actions: {
     add(document: IDocument) {
       this.documents.push(document);
-    }
-  }
-})
+    },
+  },
+});

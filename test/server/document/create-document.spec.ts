@@ -1,31 +1,30 @@
-import { DocumentHelper } from '../../../utils/documentHelper'
-import { describe, expect, it, test } from 'vitest'
-import { v4 } from 'uuid';
+import { DocumentHelper } from "../../../utils/documentHelper";
+import { describe, expect, it } from "vitest";
+import { v4 } from "uuid";
 
-
-describe('Document creation', async () => {
-    it('Should create a document', async () => {
-        const document = {
-            uuid : v4(),
-            title: "title",
-            fileName: "fileName",
-            creationDate: new Date(),
-            clientId: "1",
-            type: "text/pdf",
-        }
-        DocumentHelper.create(document);
-        expect(DocumentHelper.documents).toContainEqual(document)
-    })
-    it('Should not create a document', async () => {
-        const document = {
-            uuid : v4(),
-            title: "",
-            fileName: "",
-            creationDate: new Date(),
-            clientId: "",
-            type: "",
-        }
-        DocumentHelper.create(document);
-        expect(DocumentHelper.documents).not.toContainEqual(document)
-    })
+describe("Document creation", async () => {
+  it("Should create a document", async () => {
+    const document = {
+      uuid: v4(),
+      title: "title",
+      fileName: "fileName",
+      creationDate: new Date(),
+      clientId: "1",
+      type: "text/pdf",
+    };
+    DocumentHelper.create(document);
+    expect(DocumentHelper.documents).toContainEqual(document);
+  });
+  it("Should not create a document", async () => {
+    const document = {
+      uuid: v4(),
+      title: "",
+      fileName: "",
+      creationDate: new Date(),
+      clientId: "",
+      type: "",
+    };
+    DocumentHelper.create(document);
+    expect(DocumentHelper.documents).not.toContainEqual(document);
+  });
 });

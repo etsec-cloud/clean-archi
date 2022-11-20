@@ -1,19 +1,36 @@
 <script lang="ts" setup>
-const { data: res } = await useFetch("/api/client");
-const clients = res._rawValue;
+const {
+  data: { value: clients },
+  // eslint-disable-next-line no-undef
+} = await useFetch("/api/client");
 
 async function createDocument() {
+  if (!data.file) {
+    return;
+  }
+  const form = new FormData();
+  form.append("title", data.title);
+  form.append("fileName", data.fileName);
+  form.append("file", data.file);
+  form.append("clientId", data.clientId);
+  // eslint-disable-next-line no-undef
   await $fetch("/api/document/create", {
     method: "POST",
-    body: data,
+    body: form,
   });
 }
+// eslint-disable-next-line no-undef
 const data = reactive({
   title: "",
   fileName: "",
   creationDate: new Date(),
   clientId: "",
+  file: null,
 });
+
+const handleFileSelection = (e: { target: { files: null[] } }) => {
+  data.file = e.target.files[0];
+};
 </script>
 
 <template>
@@ -29,6 +46,10 @@ const data = reactive({
       <p>
         <label for="name">file name</label>
         <input id="name" v-model="data.fileName" type="text" />
+      </p>
+      <p>
+        <label for="file"> Upload</label>
+        <input type="file" accept="application/pdf" @change="handleFileSelection($event)" />
       </p>
       <p>
         <label for="name">file name</label>

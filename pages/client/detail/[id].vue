@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+// eslint-disable-next-line no-undef
 const route = useRoute();
+// eslint-disable-next-line no-undef
 const { data: res } = await useFetch(`/api/client/${route.params.id}`);
 const client = res._rawValue.res;
 </script>

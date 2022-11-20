@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.65% </span>
+                <span class="strong">96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>66/69</span>
+                <span class='fraction'>72/75</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.65% </span>
+                <span class="strong">96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/69</span>
+                <span class='fraction'>72/75</span>
             </div>
         
             
@@ -131,7 +131,17 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -140,13 +150,12 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,6 +169,8 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -186,6 +197,8 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -199,82 +212,90 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">49x</span></td><td class="text"><pre class="prettyprint lang-js">import bcrypt from 'bcrypt';
-import { v4 } from 'uuid';
-import { DocumentHelper } from './documentHelper';
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import bcrypt from "bcrypt";
+import { v4 } from "uuid";
+import { DocumentHelper } from "./documentHelper";
+&nbsp;
+// @ts-ignore
+import { IClient, IInputClient, IClientConnection } from "../interfaces/client";
 export class ClientHelper {
-    static clients: IClient[] = [];
-    static getAll(): IClient[] {
-        return this.clients;
+  static clients: IClient[] = [];
+  static getAll(): IClient[] {
+    return this.clients;
+  }
+  static getOne(uuid: string): IClient {
+    const client = this.clients.find((client) =&gt; client.uuid === uuid);
+    if (client) {
+      client.documents = DocumentHelper.getByClient(uuid);
+      return client;
     }
-    static getOne(uuid:string): IClient{
-        const client = this.clients.find(client =&gt; client.uuid === uuid);
-        if (client) {
-            client.documents = DocumentHelper.getByClient(uuid);
-            console.log(client.documents);
-            return client;
-        }
-<span class="branch-0 cbranch-no" title="branch not covered" >        throw new Error('Client not found');</span>
+<span class="branch-0 cbranch-no" title="branch not covered" >    throw new Error("Client not found");</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+&nbsp;
+  static register(input: IInputClient): Boolean {
+    const password = bcrypt.hashSync(input.password, 10);
+    const client = {
+      uuid: v4(),
+      name: input.name,
+      email: input.email,
+      password,
+    };
+    if (
+      !this.clients.find((client) =&gt; client.email === input.email) &amp;&amp;
+      input.name !== "" &amp;&amp;
+      input.email !== "" &amp;&amp;
+      input.password !== "" &amp;&amp;
+      input.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &amp;&amp;
+      input.name.match(/^[a-z ,.'-]+$/i)
+    ) {
+      this.clients.push(client);
+      return true;
+    } else {
+      return false;
+    }
+  }
+  static login(input: IClientConnection): IClient | undefined {
+    const client = this.clients.find((client) =&gt; client.email === input.email);
+    if (client &amp;&amp; bcrypt.compareSync(input.password, client.password)) {
+      return client;
+<span class="branch-0 cbranch-no" title="branch not covered" >    } else {</span>
+<span class="cstat-no" title="statement not covered" >      return undefined;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-    
-    static register(input :IInputClient): Boolean {
-        const password = bcrypt.hashSync(input.password, 10);
-        const client = {
-            uuid: v4(),
-            name: input.name,
-            email: input.email,
-            password
-        }
-        if (
-            !this.clients.find(client =&gt; client.email === input.email)
-            &amp;&amp; input.name !== "" &amp;&amp; input.email !== "" &amp;&amp; input.password !== ""
-            &amp;&amp; input.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-            &amp;&amp; input.name.match(/^[a-z ,.'-]+$/i)
-        ) {
-            this.clients.push(client);
-            return true
-        } else {
-            return false
-        }
+  }
+  static delete(uuid: string): Boolean {
+    this.clients = this.clients.filter((client) =&gt; client.uuid !== uuid);
+    return true;
+  }
+  static update(uuid: string, input: IInputClient): void {
+    const client = this.clients.find((client) =&gt; client.uuid === uuid);
+    if (
+      client &amp;&amp;
+      input.name !== "" &amp;&amp;
+      input.email !== "" &amp;&amp;
+      input.password !== "" &amp;&amp;
+      input.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &amp;&amp;
+      input.name.match(/^[a-z ,.'-]+$/i)
+    ) {
+      client.name = input.name;
+      client.email = input.email;
     }
-    static login(input: IClientConnection): IClient | undefined {
-        const client = this.clients.find(client =&gt; client.email === input.email);
-        if (client &amp;&amp; bcrypt.compareSync(input.password, client.password)) {
-            return client;
-<span class="branch-0 cbranch-no" title="branch not covered" >        } else {</span>
-<span class="cstat-no" title="statement not covered" >            return undefined;</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
+  }
+  static resetPassword(uuid: string, password: string): void {
+    const client = this.clients.find((client) =&gt; client.uuid === uuid);
+    if (client) {
+      client.password = bcrypt.hashSync(password, 10);
     }
-    static delete(uuid: string): Boolean {
-        this.clients = this.clients.filter(client =&gt; client.uuid !== uuid);
-        return true;
-    }
-    static update(uuid: string, input: IInputClient): void {
-        const client = this.clients.find(client =&gt; client.uuid === uuid);
-        if (
-            client 
-            &amp;&amp; input.name !== "" &amp;&amp; input.email !== "" &amp;&amp; input.password !== ""
-            &amp;&amp; input.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-            &amp;&amp; input.name.match(/^[a-z ,.'-]+$/i)
-        ) {
-            client.name = input.name;
-            client.email = input.email;
-        }
-    }
-    static resetPassword(uuid:string, password:string):void{
-        const client = this.clients.find(client =&gt; client.uuid === uuid);
-        if (client) {
-            client.password =bcrypt.hashSync(password, 10);
-        }
-    }
-}</pre></td></tr></table></pre>
+  }
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-18T20:13:25.617Z
+                at 2022-11-20T12:53:36.592Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -1,6 +1,7 @@
-import { DocumentHelper } from "~~/utils/documentHelper"
+import { DocumentHelper } from "~~/utils/documentHelper";
 
-export default defineEventHandler (() => {
-    const res = DocumentHelper.getAll();
-    return res
-})
+// eslint-disable-next-line no-undef
+export default defineEventHandler(() => {
+  const res = DocumentHelper.getAll();
+  return res;
+});

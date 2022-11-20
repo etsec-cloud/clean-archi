@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 async function registerClient() {
+  // eslint-disable-next-line no-undef
   await $fetch("/api/client/register", {
     method: "POST",
     body: data,
   });
 }
+// eslint-disable-next-line no-undef
 const data = reactive({
   name: "",
   email: "",
