@@ -6,6 +6,7 @@ const {
   data: {
     value: { res: document },
   },
+  // eslint-disable-next-line no-undef
 } = await useFetch(`/api/document/${route.params.id}`);
 </script>
 
@@ -16,6 +17,7 @@ const {
     <NuxtLink to="/">Accueil</NuxtLink> <br />
     title: {{ document.title }} <br />
     fileName: {{ document.fileName }} <br />
+    file : {{ document.file }}
   </div>
 </template>
 

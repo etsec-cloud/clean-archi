@@ -1,4 +1,7 @@
 import { v4 } from "uuid";
+// @ts-ignore
+import { IDocument } from "../interfaces/document";
+import * as fs from "fs";
 
 export class DocumentHelper {
   static documents: IDocument[] = [];
@@ -12,11 +15,25 @@ export class DocumentHelper {
     if (document) {
       return document;
     }
-    throw new Error("Client not found");
+    throw new Error("Document not found");
   }
   static create(document: IDocument): void {
-    document.uuid = v4();
-    this.documents.push(document);
+    if (
+      document.fileName !== "" &&
+      document.title !== "" &&
+      document.clientId !== "" &&
+      document.creationDate !== undefined
+    ) {
+      document.uuid = v4();
+      this.documents.push(document);
+    }
+  }
+  static uploadDocument(fields: any, files: any): IDocument {
+    fs.copyFileSync(files.file.filepath, `./public/${fields.fileName}.pdf`);
+  }
+  static deleteFile(fileName: string): Boolean {
+    fs.rmSync(`./public/${fileName}.pdf`);
+    return true;
   }
   static delete(uuid: string): Boolean {
     this.documents = this.documents.filter((doc) => doc.uuid !== uuid);

@@ -5,10 +5,18 @@ const {
 } = await useFetch("/api/client");
 
 async function createDocument() {
+  if (!data.file) {
+    return;
+  }
+  const form = new FormData();
+  form.append("title", data.title);
+  form.append("fileName", data.fileName);
+  form.append("file", data.file);
+  form.append("clientId", data.clientId);
   // eslint-disable-next-line no-undef
   await $fetch("/api/document/create", {
     method: "POST",
-    body: data,
+    body: form,
   });
 }
 // eslint-disable-next-line no-undef
@@ -20,7 +28,11 @@ const data = reactive({
   file: null,
 });
 
+<<<<<<< HEAD
 const handleFileSelection = (e: { target: { files: null[] }; }) => {
+=======
+const handleFileSelection = (e: { target: { files: null[] } }) => {
+>>>>>>> abc
   data.file = e.target.files[0];
 };
 </script>
@@ -41,7 +53,11 @@ const handleFileSelection = (e: { target: { files: null[] }; }) => {
       </p>
       <p>
         <label for="file"> Upload</label>
-        <input type="file" @change="handleFileSelection($event)" />
+        <input
+          type="file"
+          accept="application/pdf"
+          @change="handleFileSelection($event)"
+        />
       </p>
       <p>
         <label for="name">file name</label>

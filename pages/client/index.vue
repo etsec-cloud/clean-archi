@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+// eslint-disable-next-line no-undef
 const { data: res } = await useFetch("/api/client");
 const clients = res._rawValue;
 async function deleteClient(id: string) {
+  // eslint-disable-next-line no-undef
   await $fetch(`/api/client/${id}`, {
     method: "DELETE",
   });

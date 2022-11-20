@@ -1,17 +1,19 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
+// @ts-ignore
+import { IClient } from "../interfaces/client";
 
-export const useClientsStore = defineStore('ClientStore', {
-  state: () => ({
+export const useClientsStore = defineStore("ClientStore", {
+  state: (): {
+    clients: IClient[];
+  } => ({
     clients: [],
-  } as {
-    clients: Array<IClient>
   }),
   getters: {
-    all: (state) => state.clients
+    all: (state) => state.clients,
   },
   actions: {
     add(client: IClient) {
       this.clients.push(client);
-    }
-  }
-})
+    },
+  },
+});

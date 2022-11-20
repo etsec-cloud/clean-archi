@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@": path.resolve(__dirname, "."),
   },
   modules: [
+    "formidable",
     [
       "@pinia/nuxt",
       {

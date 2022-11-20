@@ -1,6 +1,9 @@
 import bcrypt from "bcrypt";
 import { v4 } from "uuid";
 import { DocumentHelper } from "./documentHelper";
+
+// @ts-ignore
+import { IClient, IInputClient, IClientConnection } from "../interfaces/client";
 export class ClientHelper {
   static clients: IClient[] = [];
   static getAll(): IClient[] {

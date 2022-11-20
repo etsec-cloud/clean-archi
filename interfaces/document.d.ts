@@ -5,4 +5,5 @@ interface IDocument {
   fileName: string;
   creationDate: Date;
   clientId: string;
+  type: string;
 }

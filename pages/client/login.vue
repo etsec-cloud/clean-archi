@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-async function login(input: IClientConnection) {
+async function login() {
+  // eslint-disable-next-line no-undef
   await $fetch("/api/client/login", {
     method: "POST",
     body: data,
   });
 }
+// eslint-disable-next-line no-undef
 const data = reactive({
   email: "",
   password: "",
